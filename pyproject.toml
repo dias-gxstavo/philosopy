@@ -1,0 +1,46 @@
+[project]
+name = "philosopy"
+version = "0.1.0"
+description = "a python api to get famous philosophers quotes"
+readme = "README.md"
+requires-python = ">=3.14"
+
+dependencies = [
+    "alembic>=1.18.5",
+    "fastapi[standard]>=0.139.2",
+    "psycopg2-binary>=2.9.12",
+    "pydantic-settings>=2.14.2",
+    "pytest>=9.1.1",
+    "python-dotenv>=1.2.2",
+    "ruff>=0.15.22",
+    "sqlmodel>=0.0.39",
+    "taskipy>=1.14.1",
+]
+
+[tool.fastapi]
+entrypoint = "app.main:app"
+
+[tool.ruff]
+line-length = 79
+exclude = [
+    "alembic/",
+    "app/models/"
+]
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = '-p no:warnings'
+
+[tool.taskipy.tasks]
+lint = 'uv run ruff check'
+format = 'uv run ruff format'
+server = 'uv run fastapi dev'
+test = 'pytest -s -x --cov=src -vv'
