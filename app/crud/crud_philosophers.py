@@ -1,46 +1,49 @@
 from typing import List, Optional
 
 from fastapi import HTTPException
-from sqlmodel import Session, select
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
+from sqlmodel import select
 
 from app.models.philosopher import Philosopher, PhilosopherPublicWithQuotes
-from app.models.quote import Quote
+from app.models.quote import QuotePublic
 
 
-async def get(session: Session, philosopher_id: int
+async def get(session: AsyncSession, philosopher_id: int
 ) -> Optional[Philosopher]:
-    return session.get(Philosopher, philosopher_id)
+    return await session.get(Philosopher, philosopher_id)
 
 
 async def get_all(
-    session: Session,
+    session: AsyncSession,
     skip: int = 0,
-    limit: int = 20
+    limit: int = 20,
 ) -> List[Philosopher]:
     statement = select(Philosopher).offset(skip).limit(limit)
-    result = session.exec(statement)
+    result = await session.exec(statement)
     return result.all()
 
 
 async def get_philosopher_and_quotes(
-    session: Session,
+    session: AsyncSession,
     philosopher_id: int,
     skip: int = 0,
     limit: int = 20,
 ) -> PhilosopherPublicWithQuotes:
-    philosopher = session.get(Philosopher, philosopher_id)
+    statement = (
+        select(Philosopher)
+        .where(Philosopher.philosopher_id == philosopher_id)
+        .options(selectinload(Philosopher.quotes))
+    )
+    result = await session.exec(statement)
+    philosopher = result.first()
+
     if not philosopher:
         raise HTTPException(status_code=404, detail="Philosopher not found")
 
-    quotes_statement = (
-        select(Quote)
-        .where(Quote.philosopher_id == philosopher_id)
-        .offset(skip)
-        .limit(limit)
-    )
-    quotes = session.exec(quotes_statement).all()
+    paginated_quotes = philosopher.quotes[skip : skip + limit]
 
     return PhilosopherPublicWithQuotes(
         **philosopher.model_dump(),
-        quotes=quotes
+        quotes=[QuotePublic.model_validate(q) for q in paginated_quotes],
     )

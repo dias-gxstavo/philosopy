@@ -1,13 +1,23 @@
 
+from contextlib import asynccontextmanager
+
 from fastapi import Depends, FastAPI, HTTPException, status
 from sqlalchemy import text
-from sqlmodel import Session
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.database import get_session
+from app.database import get_session, init_db
 from app.routers import philosophers, quotes
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await init_db()
+    yield
+
+
 app = FastAPI(
-    title="a python api to get famous philosophers quotes"
+    title="a python api to get famous philosophers quotes",
+    lifespan=lifespan
 )
 
 app.include_router(philosophers.router)
@@ -15,12 +25,12 @@ app.include_router(quotes.router)
 
 
 @app.get("/health", status_code=status.HTTP_200_OK, tags=["health"])
-def health_check(db: Session = Depends(get_session)):
+async def health_check(db: AsyncSession = Depends(get_session)):
     try:
-        db.execute(text("SELECT 1"))
+        await db.execute(text("SELECT 1"))
         return {"status": "healthy", "database": "connected"}
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail=f"Database connection failed: {str(e)}"
+            detail=f"Database connection failed: {str(e)}",
         )
