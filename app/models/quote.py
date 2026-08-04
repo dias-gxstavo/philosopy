@@ -21,5 +21,10 @@ class QuotePublic(QuoteBase):
     quote_id: int
 
 
+class QuotePublicNested(SQLModel):
+    text: str
+    quote_id: int
+
+
 class QuotePublicWithPhilosopher(QuotePublic):
     philosopher: "PhilosopherPublic"

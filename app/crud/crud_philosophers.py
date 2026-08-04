@@ -6,7 +6,7 @@ from sqlalchemy.orm import selectinload
 from sqlmodel import select
 
 from app.models.philosopher import Philosopher, PhilosopherPublicWithQuotes
-from app.models.quote import QuotePublic
+from app.models.quote import QuotePublicNested
 
 
 async def get(session: AsyncSession, philosopher_id: int
@@ -45,5 +45,7 @@ async def get_philosopher_and_quotes(
 
     return PhilosopherPublicWithQuotes(
         **philosopher.model_dump(),
-        quotes=[QuotePublic.model_validate(q) for q in paginated_quotes],
+        quotes=[
+            QuotePublicNested.model_validate(q) for q in paginated_quotes
+        ],
     )

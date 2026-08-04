@@ -2,7 +2,7 @@ from typing import Optional
 
 from sqlmodel import Field, Relationship, SQLModel
 
-from app.models.quote import Quote, QuotePublic
+from app.models.quote import Quote, QuotePublicNested
 
 
 class PhilosopherBase(SQLModel):
@@ -23,5 +23,10 @@ class PhilosopherPublic(PhilosopherBase):
     philosopher_id: int
 
 
-class PhilosopherPublicWithQuotes(PhilosopherPublic):
-    quotes: list["QuotePublic"] = []
+class PhilosopherRead(SQLModel):
+    name: str
+    philosopher_id: int
+
+
+class PhilosopherPublicWithQuotes(PhilosopherRead):
+    quotes: list["QuotePublicNested"] = Field(default_factory=list)

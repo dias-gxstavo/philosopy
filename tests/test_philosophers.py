@@ -90,6 +90,7 @@ async def test_philosopher_quotes_endpoint_returns_related_quotes(
 
     texts = {q["text"] for q in data["quotes"]}
     assert texts == {q.text for q in quotes}
+    assert all("philosopher_id" not in quote for quote in data["quotes"])
 
 
 async def test_philosopher_quotes_endpoint_empty_when_no_quotes(
