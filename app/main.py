@@ -1,12 +1,20 @@
 
 from contextlib import asynccontextmanager
 
+import sentry_sdk
 from fastapi import Depends, FastAPI, HTTPException, status
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_session, init_db
 from app.routers import philosophers, quotes
+from app.settings import settings
+
+sentry_sdk.init(
+    dsn=settings.SENTRY_DSN,
+    send_default_pii=True,
+    enable_logs=True,
+)
 
 
 @asynccontextmanager
