@@ -26,5 +26,5 @@ class QuotePublicNested(SQLModel):
     quote_id: int
 
 
-class QuotePublicWithPhilosopher(QuotePublic):
-    philosopher: "PhilosopherPublic"
+class QuotePublicWithPhilosopherName(QuotePublicNested):
+    philosopher_name: str

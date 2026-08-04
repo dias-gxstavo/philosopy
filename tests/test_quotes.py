@@ -49,3 +49,21 @@ async def test_list_quotes_empty_when_no_data(client):
 
     assert response.status_code == HTTPStatus.OK
     assert response.json() == []
+
+
+async def test_random_quotes_include_philosopher_name(
+    client,
+    philosopher_with_quote,
+):
+    philosopher, quote = philosopher_with_quote
+
+    response = await client.get("/quotes/random?limit=1")
+
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == [
+        {
+            "quote_id": quote.quote_id,
+            "text": quote.text,
+            "philosopher_name": philosopher.name,
+        }
+    ]

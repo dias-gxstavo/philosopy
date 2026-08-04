@@ -6,7 +6,7 @@ from sqlmodel import Session
 
 from app.crud.crud_quotes import get, get_all, get_quotes_randomized
 from app.database import get_session
-from app.models.quote import QuotePublic
+from app.models.quote import QuotePublic, QuotePublicWithPhilosopherName
 
 router = APIRouter(prefix="/quotes", tags=["quotes"])
 
@@ -20,7 +20,7 @@ async def get_quotes(
     return await get_all(db, skip=skip, limit=limit)
 
 
-@router.get("/random", response_model=List[QuotePublic])
+@router.get("/random", response_model=List[QuotePublicWithPhilosopherName])
 async def get_random_quotes(
     limit: int = 20,
     db: Session = Depends(get_session),
