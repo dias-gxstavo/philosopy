@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     )
 
     DATABASE_URL: PostgresDsn
+    IPV4_DATABASE_URL: PostgresDsn | None = None
     DEBUG_SQL: bool = Field(init=False)
     SENTRY_DSN: str | None = None
 
