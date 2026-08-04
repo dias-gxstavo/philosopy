@@ -1,0 +1,11 @@
+services:
+  app:
+    image: philosopy
+    restart: unless-stopped
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=${IPV4_DATABASE_URL}
+      - DEBUG_SQL=${DEBUG_SQL}
+      - SENTRY_DSN=${SENTRY_DSN}

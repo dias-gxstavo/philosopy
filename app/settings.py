@@ -12,7 +12,7 @@ class Settings(BaseSettings):
 
     DATABASE_URL: PostgresDsn
     DEBUG_SQL: bool = Field(init=False)
-    SENTRY_DSN: str
+    SENTRY_DSN: str | None = None
 
 
 settings = Settings()
