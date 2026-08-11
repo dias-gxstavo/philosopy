@@ -9,7 +9,8 @@ from app.models.philosopher import Philosopher, PhilosopherPublicWithQuotes
 from app.models.quote import QuotePublicNested
 
 
-async def get(session: AsyncSession, philosopher_id: int
+async def get(
+    session: AsyncSession, philosopher_id: int
 ) -> Optional[Philosopher]:
     return await session.get(Philosopher, philosopher_id)
 
@@ -39,13 +40,11 @@ async def get_philosopher_and_quotes(
     philosopher = result.first()
 
     if not philosopher:
-        raise HTTPException(status_code=404, detail="Philosopher not found")
+        raise HTTPException(status_code=404, detail='Philosopher not found')
 
     paginated_quotes = philosopher.quotes[skip : skip + limit]
 
     return PhilosopherPublicWithQuotes(
         **philosopher.model_dump(),
-        quotes=[
-            QuotePublicNested.model_validate(q) for q in paginated_quotes
-        ],
+        quotes=[QuotePublicNested.model_validate(q) for q in paginated_quotes],
     )

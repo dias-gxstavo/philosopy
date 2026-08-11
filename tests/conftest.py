@@ -9,11 +9,11 @@ from app.database import get_session
 from app.main import app
 
 
-@pytest.fixture(name="engine")
+@pytest.fixture(name='engine')
 async def engine_fixture():
     engine = create_async_engine(
-        "sqlite+aiosqlite://",
-        connect_args={"check_same_thread": False},
+        'sqlite+aiosqlite://',
+        connect_args={'check_same_thread': False},
         poolclass=StaticPool,
     )
     async with engine.begin() as conn:
@@ -26,13 +26,13 @@ async def engine_fixture():
     await engine.dispose()
 
 
-@pytest.fixture(name="session")
+@pytest.fixture(name='session')
 async def session_fixture(engine):
     async with AsyncSession(engine, expire_on_commit=False) as session:
         yield session
 
 
-@pytest.fixture(name="client")
+@pytest.fixture(name='client')
 async def client_fixture(session):
     async def get_session_override():
         yield session
@@ -41,8 +41,7 @@ async def client_fixture(session):
 
     transport = ASGITransport(app=app)
     async with AsyncClient(
-        transport=transport,
-        base_url="http://test"
+        transport=transport, base_url='http://test'
     ) as client:
         yield client
 

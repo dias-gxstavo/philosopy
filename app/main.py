@@ -1,4 +1,3 @@
-
 from contextlib import asynccontextmanager
 
 import sentry_sdk
@@ -24,21 +23,20 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="a python api to get famous philosophers quotes",
-    lifespan=lifespan
+    title='a python api to get famous philosophers quotes', lifespan=lifespan
 )
 
 app.include_router(philosophers.router)
 app.include_router(quotes.router)
 
 
-@app.get("/health", status_code=status.HTTP_200_OK, tags=["health"])
+@app.get('/health', status_code=status.HTTP_200_OK, tags=['health'])
 async def health_check(db: AsyncSession = Depends(get_session)):
     try:
-        await db.execute(text("SELECT 1"))
-        return {"status": "healthy", "database": "connected"}
+        await db.execute(text('SELECT 1'))
+        return {'status': 'healthy', 'database': 'connected'}
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail=f"Database connection failed: {str(e)}",
+            detail=f'Database connection failed: {str(e)}',
         )
