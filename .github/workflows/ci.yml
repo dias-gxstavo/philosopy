@@ -7,7 +7,7 @@ jobs:
 
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      DEBUG_SQL: ${{ secrets.DATABASE_URL }}
+      DEBUG_SQL: ${{ secrets.DEBUG_SQL }}
 
     steps:
       - name: Checkout
