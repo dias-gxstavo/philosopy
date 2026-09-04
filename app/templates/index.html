@@ -1,259 +1,154 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="a python api to get famous philosophers quotes.">
+	<meta name="author" content="Gustavo Huguenin">
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Philosopy API - Dark Mode</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&amp;family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-surface": "#dbe3ee",
-                        "surface": "#0c141c",
-                        "surface-container": "#182028",
-                        "outline-variant": "#44474d",
-                        "on-secondary-fixed": "#2e1500",
-                        "surface-container-high": "#232b33",
-                        "inverse-surface": "#dbe3ee",
-                        "surface-container-low": "#141c24",
-                        "primary-fixed-dim": "#b6c7eb",
-                        "on-tertiary-fixed": "#1c1c18",
-                        "on-tertiary-container": "#93928c",
-                        "on-tertiary-fixed-variant": "#474742",
-                        "on-error-container": "#ffdad6",
-                        "tertiary-fixed-dim": "#c9c6c0",
-                        "starlight-silver": "#D0D8E3",
-                        "secondary": "#ffb77b",
-                        "on-background": "#dbe3ee",
-                        "surface-container-highest": "#2e363e",
-                        "on-primary-fixed": "#081b38",
-                        "surface-deep": "#0F192A",
-                        "celestial-gold": "#B87333",
-                        "tertiary": "#c9c6c0",
-                        "inverse-primary": "#4e5f7e",
-                        "secondary-fixed": "#ffdcc2",
-                        "primary": "#b6c7eb",
-                        "error": "#ffb4ab",
-                        "primary-container": "#1a2b48",
-                        "surface-dim": "#0c141c",
-                        "on-surface-variant": "#c5c6ce",
-                        "tertiary-fixed": "#e5e2dc",
-                        "on-primary": "#20304e",
-                        "surface-bright": "#323a43",
-                        "on-secondary": "#4d2700",
-                        "surface-container-lowest": "#070f16",
-                        "tertiary-container": "#2b2b27",
-                        "on-error": "#690005",
-                        "outline": "#8f9098",
-                        "surface-tint": "#b6c7eb",
-                        "midnight": "#1A2B48",
-                        "primary-fixed": "#d7e2ff",
-                        "on-tertiary": "#31312c",
-                        "on-secondary-container": "#ffb270",
-                        "surface-variant": "#2e363e",
-                        "ivory": "#FFFCF5",
-                        "on-primary-fixed-variant": "#374765",
-                        "secondary-container": "#7a4100",
-                        "background": "#0c141c",
-                        "error-container": "#93000a",
-                        "on-secondary-fixed-variant": "#6d3a00",
-                        "on-primary-container": "#8293b5",
-                        "inverse-on-surface": "#29313a",
-                        "secondary-fixed-dim": "#ffb77b"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "margin-desktop": "48px",
-                        "margin-mobile": "16px",
-                        "section-gap": "64px",
-                        "gutter": "24px",
-                        "base": "8px"
-                    },
-                    "fontFamily": {
-                        "body-lg": ["Literata"],
-                        "headline-xl": ["EB Garamond"],
-                        "headline-lg": ["EB Garamond"],
-                        "headline-lg-mobile": ["EB Garamond"],
-                        "label-lg": ["Work Sans"],
-                        "headline-md": ["EB Garamond"],
-                        "label-sm": ["Work Sans"],
-                        "body-md": ["Literata"]
-                    },
-                    "fontSize": {
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
-                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
-                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "600" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
-                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
-                    }
-                }
-            }
-        }
-    </script>
-<style>
-        .astrolabe-spin-slow { animation: spin 20s linear infinite; }
-        .astrolabe-spin-medium { animation: spin 15s linear infinite reverse; }
-        .astrolabe-spin-fast { animation: spin 10s linear infinite; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+	<link rel="shortcut icon" href="/static/favicon.ico" />
+	<link rel="manifest" href="/static/site.webmanifest" />
+	<meta name="apple-mobile-web-app-title" content="" />
+	<link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+	<link rel="icon" type="image/png" href="/static/favicon-96x96.png" sizes="96x96" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
 
-        .glowing-star {
-            box-shadow: 0 0 12px rgba(184, 115, 51, 0.4); /* celestial-gold */
-        }
+	<link rel="canonical" href="https://philosopy.com/">
+	<title> philosopy | a python api to get famous philosophers quotes </title>
 
-        .glass-panel {
-            background: rgba(26, 43, 72, 0.4); /* midnight/40 */
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 252, 245, 0.1); /* ivory/10 */
-        }
-
-        .input-line:focus-within {
-            border-bottom-color: #B87333; /* celestial-gold */
-        }
-    </style>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Linden+Hill&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/static/style.css">
 </head>
-<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col pt-[88px] selection:bg-celestial-gold/30 selection:text-ivory">
-<!-- TopNavBar -->
-<header class="bg-surface-dim/80 backdrop-blur-md text-primary font-label-lg text-label-lg fixed top-0 w-full border-b border-starlight-silver/10 z-50 transition-all duration-300">
-<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
-<a class="font-headline-md text-headline-md text-celestial-gold tracking-tighter" href="#">Philosopy</a>
-<nav class="hidden md:flex gap-8">
-<a class="text-on-surface-variant hover:text-celestial-gold transition-colors duration-300" href="#">Guide</a>
-<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">API Reference</a>
-</nav>
-<div class="flex items-center gap-4">
-<button class="hidden md:block px-6 py-2 border border-starlight-silver text-on-surface hover:border-celestial-gold hover:text-celestial-gold transition-all duration-300 rounded font-label-lg text-label-lg scale-95 duration-200 hover:scale-100">Source</button>
-<button class="hidden md:block px-6 py-2 border border-starlight-silver text-on-surface hover:border-celestial-gold hover:text-celestial-gold transition-all duration-300 rounded font-label-lg text-label-lg scale-95 duration-200 hover:scale-100">API</button>
-<button class="md:hidden text-on-surface-variant hover:text-celestial-gold transition-colors duration-300">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
-</button>
-</div>
-</div>
-</header>
-<main class="flex-grow flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop gap-section-gap py-section-gap">
-<!-- Hero Section -->
-<section class="w-full text-center flex flex-col items-center gap-8 mt-6">
-<div class="relative mx-auto mb-6 w-32 h-32 md:w-40 md:h-40 flex items-center justify-center">
-<img alt="Philosopy Wizard Icon" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8gix4Pd8sRlskr4sekcNRVv2qK_1TmjVth2UcaQIxGgLaXfBCuwxjBCvjjDkCw6nW89gzIjYsTUaFAbgcUMskbQkYZljv3vYfT50mnAidld_9kvQlDM2RrnrWQvKphm_oIIvDemyGZw1Dr70PTZ81u03-jFrUtUgtZYjPc7PDdb6A8GCik4-zwMoWV6x91Cf_FZ39xjlqgm-k20a5QqRodV3hHBjq8YKZLP7i5yRcHM8eHPvYAkk"/>
-</div>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">The wisdom of the ages, delivered via JSON.</p>
-<div class="flex flex-col sm:flex-row gap-6 mt-8">
-<button class="px-8 py-4 border border-starlight-silver text-on-surface rounded font-label-lg text-label-lg hover:border-celestial-gold hover:text-celestial-gold transition-all"> GO TO DOCUMENTATION</button>
-</div>
-</section>
-<!-- Blockquote Section -->
-<section class="w-full max-w-4xl mx-auto text-center my-12 relative px-8 py-16 border-y border-starlight-silver/10">
-<span class="material-symbols-outlined text-4xl text-celestial-gold/40 absolute top-4 left-1/2 -translate-x-1/2" style="font-variation-settings: 'FILL' 1;">format_quote</span>
-<blockquote class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface italic text-balance mb-6 mt-6">
-                "The happiness of your life depends upon the quality of your thoughts."
-            </blockquote>
-<cite class="font-label-lg text-label-lg text-celestial-gold tracking-widest not-italic uppercase">— Marcus Aurelius</cite>
-</section>
-<!-- Features Columns -->
-<section class="w-full grid grid-cols-1 md:grid-cols-3 gap-gutter my-12">
-<!-- Column 1 -->
-<div class="glass-panel p-8 rounded-lg flex flex-col gap-4 group hover:border-celestial-gold/50 transition-colors relative overflow-hidden">
-<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-celestial-gold/10 to-transparent"></div>
-<div class="text-celestial-gold font-label-sm text-label-sm tracking-[0.2em] mb-2">I. QUERY</div>
-<h3 class="font-headline-md text-headline-md text-on-surface">Simple REST endpoints</h3>
-<p class="font-body-md text-body-md text-on-surface-variant flex-grow">Designed for clarity. Access the vast repository of classical thought with intuitive, standard HTTP requests that feel as logical as the philosophy they serve.</p>
-<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity flex justify-end">
-<span class="material-symbols-outlined text-celestial-gold text-sm">open_in_new</span>
-</div>
-</div>
-<!-- Column 2 -->
-<div class="glass-panel p-8 rounded-lg flex flex-col gap-4 group hover:border-celestial-gold/50 transition-colors relative overflow-hidden">
-<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-celestial-gold/10 to-transparent"></div>
-<div class="text-celestial-gold font-label-sm text-label-sm tracking-[0.2em] mb-2">II. RECEIVE</div>
-<h3 class="font-headline-md text-headline-md text-on-surface">Lightweight JSON responses</h3>
-<p class="font-body-md text-body-md text-on-surface-variant flex-grow">Minimal payload overhead. Get exactly what you need—author, text, and source context—structured cleanly for immediate integration into your interfaces.</p>
-<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity flex justify-end">
-<span class="material-symbols-outlined text-celestial-gold text-sm">data_object</span>
-</div>
-</div>
-<!-- Column 3 -->
-<div class="glass-panel p-8 rounded-lg flex flex-col gap-4 group hover:border-celestial-gold/50 transition-colors relative overflow-hidden">
-<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-celestial-gold/10 to-transparent"></div>
-<div class="text-celestial-gold font-label-sm text-label-sm tracking-[0.2em] mb-2">III. INSPIRE</div>
-<h3 class="font-headline-md text-headline-md text-on-surface">Enhance interfaces</h3>
-<p class="font-body-md text-body-md text-on-surface-variant flex-grow">Elevate your application's user experience by seamlessly weaving thought-provoking content into empty states, loading screens, or daily dashboards.</p>
-<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity flex justify-end">
-<span class="material-symbols-outlined text-celestial-gold text-sm">auto_awesome</span>
-</div>
-</div>
-</section>
-<!-- Technical Precision Section -->
-<section class="w-full flex flex-col lg:flex-row gap-12 items-center my-12 py-12">
-<div class="w-full lg:w-1/2 flex flex-col gap-6">
-<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Technical Precision meets Timeless Wisdom</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Built for modern scholars and developers alike, our infrastructure ensures the continuity of human thought is always accessible.</p>
-<ul class="flex flex-col gap-4 mt-4">
-<li class="flex items-center gap-3 text-on-surface font-body-md text-body-md">
-<span class="material-symbols-outlined text-celestial-gold text-sm" style="font-variation-settings: 'FILL' 1;">trip_origin</span>
-                        Over 10,000+ verified citations
-                    </li>
-<li class="flex items-center gap-3 text-on-surface font-body-md text-body-md">
-<span class="material-symbols-outlined text-celestial-gold text-sm" style="font-variation-settings: 'FILL' 1;">trip_origin</span>
-                        Rich metadata &amp; thematic categories
-                    </li>
-<li class="flex items-center gap-3 text-on-surface font-body-md text-body-md">
-<span class="material-symbols-outlined text-celestial-gold text-sm" style="font-variation-settings: 'FILL' 1;">trip_origin</span>
-                        99.9% uptime SLA for critical inquiries
-                    </li>
-</ul>
-</div>
-<div class="w-full lg:w-1/2 glass-panel p-1 rounded-lg border border-starlight-silver/20 relative">
-<!-- Mac-like header -->
-<div class="flex items-center gap-2 p-3 border-b border-starlight-silver/10 bg-surface-container/50">
-<div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
-<div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
-<div class="w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
-<span class="ml-4 font-label-sm text-label-sm text-on-surface-variant font-mono">GET /api/quote/random</span>
-</div>
-<!-- Code Block -->
-<div class="p-6 bg-surface-container-lowest font-mono text-sm leading-relaxed overflow-x-auto text-on-surface-variant rounded-b-lg">
-<pre><code>{
-  <span class="text-secondary">"status"</span>: <span class="text-primary-fixed-dim">200</span>,
-  <span class="text-secondary">"data"</span>: {
-    <span class="text-secondary">"text"</span>: <span class="text-primary-fixed-dim">"The only thing permanent is change."</span>,
-    <span class="text-secondary">"quote_id"</span>: <span class="text-primary-fixed-dim">"1189"</span>,
-    <span class="text-secondary">"philosopher_name"</span>: <span class="text-primary-fixed-dim">"Immanuel Kant"</span>,
-  }
-}</code></pre>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-surface-container-lowest w-full border-t border-starlight-silver/10 mt-auto">
-<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 gap-8 max-w-7xl mx-auto">
-<div class="font-headline-md text-headline-md text-celestial-gold text-center md:text-left">
-                Philosopy
+    <body>
+	<header>
+        <h1><a href="https://github.com/dias-gxstavo/philosopy">philosopy</a></h1>
+    	  <nav>
+    		  <ul>
+    		    <li><a href="https://github.com/dias-gxstavo/philosopy">Source</a></li>
+    		    <li><a href="/docs">Docs</a></li>
+    		  </ul>
+    	  </nav>
+	</header>
+	<main>
+    <section class="hero">
+        <p>⎯⎯ a python api to get famous philosophers quotes ⎯⎯</p>
+        <h1>The wisdom of the ages, delivered via <em>{ JSON }</em> </h1>
+
+        <a href="/docs" class="get-started">
+            Get started →
+        </a>
+    </section>
+
+    <section class="features">
+        <article class="feature-card">
+            <span class="feature-number">I. QUERY</span>
+
+            <h2>Simple REST endpoints</h2>
+
+            <p>
+                Designed for clarity. Access the vast repository of classical
+                thought with intuitive, standard HTTP requests that feel as
+                logical as the philosophy they serve.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <span class="feature-number">II. RECEIVE</span>
+
+            <h2>Lightweight JSON responses</h2>
+
+            <p>
+                Minimal payload overhead. Get exactly what you need—author,
+                text, and source context—structured cleanly for immediate
+                integration into your interfaces.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <span class="feature-number">III. INSPIRE</span>
+
+            <h2>Enhance interfaces</h2>
+
+            <p>
+                Elevate your application's user experience by seamlessly
+                weaving thought-provoking content into empty states,
+                loading screens, or daily dashboards.
+            </p>
+        </article>
+    </section>
+
+    <section class="api-showcase">
+        <div class="api-info">
+            <h2>From request to wisdom.</h2>
+
+            <p>
+                One endpoint is all it takes to bring philosophical thought
+                into your projects, dashboards, bots, applications or experiments.
+            </p>
+
+            <ul>
+                <li>Query quotes instantly</li>
+                <li>Identify the philosopher</li>
+                <li>Integrate anywhere JSON is supported</li>
+            </ul>
+        </div>
+
+        <div class="code-window">
+            <div class="code-header">
+                <div class="window-controls">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <code>GET /api/quotes/random</code>
             </div>
-<div class="flex flex-wrap justify-center gap-6">
-<a class="font-body-md text-body-md text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primary transition-opacity" href="#">Terms of Inquiry</a>
-<a class="font-body-md text-body-md text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primary transition-opacity" href="#">Privacy Scroll</a>
-<a class="font-body-md text-body-md text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primary transition-opacity" href="#">System Status</a>
-<a class="font-body-md text-body-md text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primary transition-opacity" href="#">Astrometry</a>
-</div>
-<div class="font-body-md text-body-md text-tertiary text-center md:text-right">
-                © MMXXIV Philosopy. Architected for the pursuit of wisdom.
-            </div>
-</div>
-</footer>
-</body></html>
+
+            <pre><code>{
+      <span class="code-key">"status"</span>: 200,
+      <span class="code-key">"data"</span>: {
+        <span class="code-key">"text"</span>: "Hope is a waking dream.",
+        <span class="code-key">"quote_id"</span>: "159",
+        <span class="code-key">"philosopher_name"</span>: "Aristotle",
+      }
+    }</code></pre>
+        </div>
+    </section>
+
+    <section class="endpoints">
+        <div class="section-heading">
+            <span>IV. EXPLORE</span>
+            <h2>Built around simple endpoints.</h2>
+            <p>
+                Everything you need to explore philosophical thought
+                through a clean REST API.
+            </p>
+        </div>
+
+        <div class="endpoint-list">
+            <article class="endpoint">
+                <span class="method">GET</span>
+                <code>/api/quotes/random</code>
+                <p>Returns a random list of quotes.</p>
+            </article>
+
+            <article class="endpoint">
+                <span class="method">GET</span>
+                <code>/api/quotes</code>
+                <p>Returns the available quotes.</p>
+            </article>
+
+            <article class="endpoint">
+                <span class="method">GET</span>
+                <code>/api/philosophers</code>
+                <p>Browse philosophers available in the API.</p>
+            </article>
+        </div>
+    </section>
+
+	</main>
+    </body>
+</html>
