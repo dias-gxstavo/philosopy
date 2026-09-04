@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="a python api to get famous philosophers quotes.">
+	<meta name="author" content="Gustavo Huguenin">
+
+	<link rel="shortcut icon" href="/static/favicon.ico" />
+	<link rel="manifest" href="/static/site.webmanifest" />
+	<meta name="apple-mobile-web-app-title" content="" />
+	<link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+	<link rel="icon" type="image/png" href="/static/favicon-96x96.png" sizes="96x96" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
+
+	<link rel="canonical" href="https://philosopy.com/">
+	<title> philosopy | a python api to get famous philosophers quotes </title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Linden+Hill&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+    <body>
+	<header>
+        <h1><a href="https://github.com/dias-gxstavo/philosopy">philosopy</a></h1>
+    	  <nav>
+    		  <ul>
+    		    <li><a href="https://github.com/dias-gxstavo/philosopy">Source</a></li>
+    		    <li><a href="/docs">Docs</a></li>
+    		  </ul>
+    	  </nav>
+	</header>
+	<main>
+    <section class="hero">
+        <p>⎯⎯ a python api to get famous philosophers quotes ⎯⎯</p>
+        <h1>The wisdom of the ages, delivered via <em>{ JSON }</em> </h1>
+
+        <a href="/docs" class="get-started">
+            Get started →
+        </a>
+    </section>
+
+    <section class="features">
+        <article class="feature-card">
+            <span class="feature-number">I. QUERY</span>
+
+            <h2>Simple REST endpoints</h2>
+
+            <p>
+                Designed for clarity. Access the vast repository of classical
+                thought with intuitive, standard HTTP requests that feel as
+                logical as the philosophy they serve.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <span class="feature-number">II. RECEIVE</span>
+
+            <h2>Lightweight JSON responses</h2>
+
+            <p>
+                Minimal payload overhead. Get exactly what you need—author,
+                text, and source context—structured cleanly for immediate
+                integration into your interfaces.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <span class="feature-number">III. INSPIRE</span>
+
+            <h2>Enhance interfaces</h2>
+
+            <p>
+                Elevate your application's user experience by seamlessly
+                weaving thought-provoking content into empty states,
+                loading screens, or daily dashboards.
+            </p>
+        </article>
+    </section>
+
+    <section class="api-showcase">
+        <div class="api-info">
+            <h2>From request to wisdom.</h2>
+
+            <p>
+                One endpoint is all it takes to bring philosophical thought
+                into your projects, dashboards, bots, applications or experiments.
+            </p>
+
+            <ul>
+                <li>Query quotes instantly</li>
+                <li>Identify the philosopher</li>
+                <li>Integrate anywhere JSON is supported</li>
+            </ul>
+        </div>
+
+        <div class="code-window">
+            <div class="code-header">
+                <div class="window-controls">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <code>GET /api/quotes/random</code>
+            </div>
+
+            <pre><code>{
+      <span class="code-key">"status"</span>: 200,
+      <span class="code-key">"data"</span>: {
+        <span class="code-key">"text"</span>: "Hope is a waking dream.",
+        <span class="code-key">"quote_id"</span>: "159",
+        <span class="code-key">"philosopher_name"</span>: "Aristotle",
+      }
+    }</code></pre>
+        </div>
+    </section>
+
+    <section class="endpoints">
+        <div class="section-heading">
+            <span>IV. EXPLORE</span>
+            <h2>Built around simple endpoints.</h2>
+            <p>
+                Everything you need to explore philosophical thought
+                through a clean REST API.
+            </p>
+        </div>
+
+        <div class="endpoint-list">
+            <article class="endpoint">
+                <span class="method">GET</span>
+                <code>/api/quotes/random</code>
+                <p>Returns a random list of quotes.</p>
+            </article>
+
+            <article class="endpoint">
+                <span class="method">GET</span>
+                <code>/api/quotes</code>
+                <p>Returns the available quotes.</p>
+            </article>
+
+            <article class="endpoint">
+                <span class="method">GET</span>
+                <code>/api/philosophers</code>
+                <p>Browse philosophers available in the API.</p>
+            </article>
+        </div>
+    </section>
+
+	</main>
+    </body>
+</html>

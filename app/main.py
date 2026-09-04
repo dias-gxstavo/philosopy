@@ -1,13 +1,22 @@
+import os
 from contextlib import asynccontextmanager
 
 import sentry_sdk
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, Request, status
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_session, init_db
 from app.routers import philosophers, quotes
 from app.settings import settings
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_PATH = os.path.join(SCRIPT_DIR, 'static')
+TEMPLATES_PATH = os.path.join(SCRIPT_DIR, 'templates')
+
 
 sentry_sdk.init(
     dsn=settings.SENTRY_DSN,
@@ -26,8 +35,16 @@ app = FastAPI(
     title='a python api to get famous philosophers quotes', lifespan=lifespan
 )
 
+app.mount('/static', StaticFiles(directory=STATIC_PATH), name='static')
+templates = Jinja2Templates(directory=TEMPLATES_PATH)
+
 app.include_router(philosophers.router)
 app.include_router(quotes.router)
+
+
+@app.get('/', response_class=HTMLResponse)
+def home(request: Request):
+    return templates.TemplateResponse(request=request, name='index.html')
 
 
 @app.get('/health', status_code=status.HTTP_200_OK, tags=['health'])
